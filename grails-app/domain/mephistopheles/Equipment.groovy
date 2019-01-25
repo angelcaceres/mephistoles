@@ -12,6 +12,7 @@ class Equipment {
     //Picture pic
     //Files file
     static belongsTo = [user:User]
+    //User user
 
     static constraints = {
         type inList:["Laptop", "Computadora de Escritorio", "Teléfono", "Celular", "Monitor", "Ventilador", "Regulador", "Impresora"]

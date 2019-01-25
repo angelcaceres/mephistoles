@@ -1,4 +1,5 @@
 package mephistopheles
+
 /*
 * Domain class for storing references info
 * Author: Angel Caceres Licona

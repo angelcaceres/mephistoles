@@ -20,16 +20,16 @@ class User {
     String institutionalMail
     String personalMail
     Boolean active = true
-    //MultipartFile profilePicture
-    static hasMany = [equipment:Equipment, address:Address, reference:Reference, files:Files, clabe:Clabe]
-    static hasOne = [github:Github]
-        
+    Github github
+    Clabe clabe
+    static hasMany = [equipment:Equipment, address:Address, reference:Reference, vacations:Vacations,  files:Files, position:Position]
+
 
     static constraints = {
         firstName blank:false
         lastName blank:false
         maternalLastName blank:true, nullable:true
-        gender inList:["Masculino", "Femenino", "Otro"]
+        gender blank:false
         homePhone size:(10..10), blank:false
         cellPhoneNumber size:(10..10), blank:false
         idNumber size:(10..10), blank:false
