@@ -11,6 +11,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'exitDate', 'error')} ">
+	<label for="exitDate">
+		<g:message code="user.exitDate.label" default="Exit Date" />
+		
+	</label>
+	<g:datePicker name="exitDate" precision="day"  value="${userInstance?.exitDate}" default="none" noSelection="['': '']" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'lastName', 'error')} required">
 	<label for="lastName">
 		<g:message code="user.lastName.label" default="Last Name" />
@@ -128,21 +137,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'clabe', 'error')} ">
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'clabe', 'error')} required">
 	<label for="clabe">
 		<g:message code="user.clabe.label" default="Clabe" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${userInstance?.clabe?}" var="c">
-    <li><g:link controller="clabe" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="clabe" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'clabe.label', default: 'Clabe')])}</g:link>
-</li>
-</ul>
-
+	<g:select id="clabe" name="clabe.id" from="${mephistopheles.Clabe.list()}" optionKey="id" required="" value="${userInstance?.clabe?.id}" class="many-to-one"/>
 
 </div>
 
@@ -161,15 +161,6 @@
 </li>
 </ul>
 
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'exitDate', 'error')} required">
-	<label for="exitDate">
-		<g:message code="user.exitDate.label" default="Exit Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="exitDate" precision="day"  value="${userInstance?.exitDate}"  />
 
 </div>
 

@@ -26,6 +26,8 @@
 					
 						<g:sortableColumn property="firstName" title="${message(code: 'user.firstName.label', default: 'First Name')}" />
 					
+						<g:sortableColumn property="exitDate" title="${message(code: 'user.exitDate.label', default: 'Exit Date')}" />
+					
 						<g:sortableColumn property="lastName" title="${message(code: 'user.lastName.label', default: 'Last Name')}" />
 					
 						<g:sortableColumn property="maternalLastName" title="${message(code: 'user.maternalLastName.label', default: 'Maternal Last Name')}" />
@@ -33,8 +35,6 @@
 						<g:sortableColumn property="gender" title="${message(code: 'user.gender.label', default: 'Gender')}" />
 					
 						<g:sortableColumn property="homePhone" title="${message(code: 'user.homePhone.label', default: 'Home Phone')}" />
-					
-						<g:sortableColumn property="cellPhoneNumber" title="${message(code: 'user.cellPhoneNumber.label', default: 'Cell Phone Number')}" />
 					
 					</tr>
 				</thead>
@@ -44,6 +44,8 @@
 					
 						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "firstName")}</g:link></td>
 					
+						<td><g:formatDate date="${userInstance.exitDate}" /></td>
+					
 						<td>${fieldValue(bean: userInstance, field: "lastName")}</td>
 					
 						<td>${fieldValue(bean: userInstance, field: "maternalLastName")}</td>
@@ -51,8 +53,6 @@
 						<td>${fieldValue(bean: userInstance, field: "gender")}</td>
 					
 						<td>${fieldValue(bean: userInstance, field: "homePhone")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "cellPhoneNumber")}</td>
 					
 					</tr>
 				</g:each>

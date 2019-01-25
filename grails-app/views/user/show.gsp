@@ -32,6 +32,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.exitDate}">
+				<li class="fieldcontain">
+					<span id="exitDate-label" class="property-label"><g:message code="user.exitDate.label" default="Exit Date" /></span>
+					
+						<span class="property-value" aria-labelledby="exitDate-label"><g:formatDate date="${userInstance?.exitDate}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.lastName}">
 				<li class="fieldcontain">
 					<span id="lastName-label" class="property-label"><g:message code="user.lastName.label" default="Last Name" /></span>
@@ -146,9 +155,7 @@
 				<li class="fieldcontain">
 					<span id="clabe-label" class="property-label"><g:message code="user.clabe.label" default="Clabe" /></span>
 					
-						<g:each in="${userInstance.clabe}" var="c">
-						<span class="property-value" aria-labelledby="clabe-label"><g:link controller="clabe" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
+						<span class="property-value" aria-labelledby="clabe-label"><g:link controller="clabe" action="show" id="${userInstance?.clabe?.id}">${userInstance?.clabe?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>
@@ -160,15 +167,6 @@
 						<g:each in="${userInstance.equipment}" var="e">
 						<span class="property-value" aria-labelledby="equipment-label"><g:link controller="equipment" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
 						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.exitDate}">
-				<li class="fieldcontain">
-					<span id="exitDate-label" class="property-label"><g:message code="user.exitDate.label" default="Exit Date" /></span>
-					
-						<span class="property-value" aria-labelledby="exitDate-label"><g:formatDate date="${userInstance?.exitDate}" /></span>
 					
 				</li>
 				</g:if>

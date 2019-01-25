@@ -21,7 +21,7 @@ class Address {
         houseNumber blank:false
         zipCode blank:false, size:(5..5)
         state blank:false
-        apartment blank:true
+        apartment nullable:true
         locality blank:false
         country blank:false
         city blank:false

@@ -38,12 +38,12 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: addressInstance, field: 'apartment', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: addressInstance, field: 'apartment', 'error')} ">
 	<label for="apartment">
 		<g:message code="address.apartment.label" default="Apartment" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:textField name="apartment" required="" value="${addressInstance?.apartment}"/>
+	<g:textField name="apartment" value="${addressInstance?.apartment}"/>
 
 </div>
 

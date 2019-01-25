@@ -27,6 +27,7 @@ class User {
 
     static constraints = {
         firstName blank:false
+        exitDate nullable:true
         lastName blank:false
         maternalLastName blank:true, nullable:true
         gender blank:false
