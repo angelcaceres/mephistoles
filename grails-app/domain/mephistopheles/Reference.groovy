@@ -11,6 +11,7 @@ class Reference {
     String maternalLastName
     String phoneNumber
     String email
+    Boolean deleted = false
     String relationship
     static belongsTo = [user:User]
 

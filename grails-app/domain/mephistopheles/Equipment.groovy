@@ -8,6 +8,7 @@ class Equipment {
     Date dateOfPurchase
     Date dateOfAssignment
     String price
+    Boolean deleted = false
     Date dateOfUnassignment
     //Picture pic
     //Files file

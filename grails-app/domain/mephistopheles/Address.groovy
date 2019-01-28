@@ -14,6 +14,7 @@ class Address {
     String locality
     String country
     String city
+    Boolean deleted = false
     String type
     static belongsTo = [user:User]
     static constraints = {

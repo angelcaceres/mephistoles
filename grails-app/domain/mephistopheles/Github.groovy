@@ -9,6 +9,7 @@ class Github {
     String gitUserName
     Boolean active = true
     Boolean gitKey = true
+    Boolean deleted = false
 
     
     static constraints = {

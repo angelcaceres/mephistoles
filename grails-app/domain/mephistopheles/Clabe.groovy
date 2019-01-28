@@ -9,6 +9,7 @@ class Clabe {
     String clabe
     String description
     String bank
+    Boolean deleted = false
     static constraints = {
         clabe blank:false, size:(18..18), unique:true
         bank nullable:false, inList:["Afirme", "American Express", "Azteca", "Bajio", " Banamex", "Banorte", "Banregio", "Bancomer", "HSBC", "Inbursa", "IXE", "Santander"]

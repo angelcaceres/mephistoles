@@ -9,6 +9,7 @@ package mephistopheles
 
 class Files {
     String description
+    Boolean deleted = false
     byte[] profilePicture
     static belongsTo = [user:User]
 

@@ -15,6 +15,7 @@ class User {
     String gender
     String homePhone
     String cellPhoneNumber
+    Boolean deleted = false
     String idNumber
     String nss
     String institutionalMail
