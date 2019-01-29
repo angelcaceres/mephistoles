@@ -8,13 +8,16 @@ import spock.lang.Specification
  */
 @TestFor(VacationsService)
 class VacationsServiceSpec extends Specification {
+    def "test for attempting to query a nonexistent user"(){
 
-    def setup() {
-    }
+        given:
+        def userId
 
-    def cleanup() {
-    }
+        when:
+        userId = 0
 
-    void "test something"() {
+        then:
+        service.calculateVacations(userId) == 'usuario no encontrado'
+
     }
 }
