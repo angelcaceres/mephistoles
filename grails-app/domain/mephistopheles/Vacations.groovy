@@ -11,5 +11,6 @@ class Vacations {
         dateOfRequest blank:false
         startDate blank:false
         endDate blank:false
+        past nullable: true
     }
 }

@@ -22,6 +22,7 @@ class User {
     String personalMail
     Boolean active = true
     Github github
+    //Date = modified = null
     Clabe clabe
     static hasMany = [equipment:Equipment, address:Address, reference:Reference, vacations:Vacations,  files:Files, position:Position]
 
