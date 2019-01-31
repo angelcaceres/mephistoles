@@ -10,6 +10,11 @@ class PositionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def pastPositions() {
+        def position = Position.findAllWhere(current:false)
+        [position:position]
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Position.list(params), model:[positionInstanceCount: Position.count()]
