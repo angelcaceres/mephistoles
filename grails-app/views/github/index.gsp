@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="gitKey" title="${message(code: 'github.gitKey.label', default: 'Git Key')}" />
 					
+						<g:sortableColumn property="deleted" title="${message(code: 'github.deleted.label', default: 'Deleted')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,8 @@
 						<td><g:formatBoolean boolean="${githubInstance.active}" /></td>
 					
 						<td><g:formatBoolean boolean="${githubInstance.gitKey}" /></td>
+					
+						<td><g:formatBoolean boolean="${githubInstance.deleted}" /></td>
 					
 					</tr>
 				</g:each>

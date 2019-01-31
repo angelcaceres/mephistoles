@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${vacationsInstance?.past}">
+				<li class="fieldcontain">
+					<span id="past-label" class="property-label"><g:message code="vacations.past.label" default="Past" /></span>
+					
+						<span class="property-value" aria-labelledby="past-label"><g:formatBoolean boolean="${vacationsInstance?.past}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${vacationsInstance?.approved}">
 				<li class="fieldcontain">
 					<span id="approved-label" class="property-label"><g:message code="vacations.approved.label" default="Approved" /></span>

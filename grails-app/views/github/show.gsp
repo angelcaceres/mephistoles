@@ -50,6 +50,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${githubInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="github.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${githubInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:githubInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

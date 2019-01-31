@@ -95,6 +95,22 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${equipmentInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="equipment.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${equipmentInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${equipmentInstance?.foto}">
+				<li class="fieldcontain">
+					<span id="foto-label" class="property-label"><g:message code="equipment.foto.label" default="Foto" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${equipmentInstance?.user}">
 				<li class="fieldcontain">
 					<span id="user-label" class="property-label"><g:message code="equipment.user.label" default="User" /></span>

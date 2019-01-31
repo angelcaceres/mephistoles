@@ -160,6 +160,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${userInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="user.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${userInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${userInstance?.equipment}">
 				<li class="fieldcontain">
 					<span id="equipment-label" class="property-label"><g:message code="user.equipment.label" default="Equipment" /></span>

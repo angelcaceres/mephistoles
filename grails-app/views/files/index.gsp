@@ -28,6 +28,8 @@
 					
 						<g:sortableColumn property="profilePicture" title="${message(code: 'files.profilePicture.label', default: 'Profile Picture')}" />
 					
+						<g:sortableColumn property="deleted" title="${message(code: 'files.deleted.label', default: 'Deleted')}" />
+					
 						<th><g:message code="files.user.label" default="User" /></th>
 					
 					</tr>
@@ -39,6 +41,8 @@
 						<td><g:link action="show" id="${filesInstance.id}">${fieldValue(bean: filesInstance, field: "description")}</g:link></td>
 					
 						<td>${fieldValue(bean: filesInstance, field: "profilePicture")}</td>
+					
+						<td><g:formatBoolean boolean="${filesInstance.deleted}" /></td>
 					
 						<td>${fieldValue(bean: filesInstance, field: "user")}</td>
 					

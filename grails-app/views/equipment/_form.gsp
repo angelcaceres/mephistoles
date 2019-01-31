@@ -74,6 +74,24 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'deleted', 'error')} ">
+	<label for="deleted">
+		<g:message code="equipment.deleted.label" default="Deleted" />
+		
+	</label>
+	<g:checkBox name="deleted" value="${equipmentInstance?.deleted}" />
+
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'foto', 'error')} required">
+	<label for="foto">
+		<g:message code="equipment.foto.label" default="Foto" />
+		<span class="required-indicator">*</span>
+	</label>
+	<input type="file" id="foto" name="foto" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: equipmentInstance, field: 'user', 'error')} required">
 	<label for="user">
 		<g:message code="equipment.user.label" default="User" />

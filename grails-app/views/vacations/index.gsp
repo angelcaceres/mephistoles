@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="endDate" title="${message(code: 'vacations.endDate.label', default: 'End Date')}" />
 					
+						<g:sortableColumn property="past" title="${message(code: 'vacations.past.label', default: 'Past')}" />
+					
 						<g:sortableColumn property="approved" title="${message(code: 'vacations.approved.label', default: 'Approved')}" />
 					
 						<th><g:message code="vacations.user.label" default="User" /></th>
@@ -45,6 +47,8 @@
 						<td><g:formatDate date="${vacationsInstance.startDate}" /></td>
 					
 						<td><g:formatDate date="${vacationsInstance.endDate}" /></td>
+					
+						<td><g:formatBoolean boolean="${vacationsInstance.past}" /></td>
 					
 						<td><g:formatBoolean boolean="${vacationsInstance.approved}" /></td>
 					

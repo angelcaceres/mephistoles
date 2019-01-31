@@ -5,7 +5,7 @@
 		<title>list of previous positions</title>
 	</head>
 	<body>
-        <g:each in="${position}" var="position" status="i">
+        <g:each in="${positions}" var="position" status="i">
             <h3>${i+1}. ${position.position}</h3>
             <p>
                 Salary: ${position.salary}

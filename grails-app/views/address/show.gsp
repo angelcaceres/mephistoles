@@ -104,6 +104,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${addressInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="address.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${addressInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${addressInstance?.user}">
 				<li class="fieldcontain">
 					<span id="user-label" class="property-label"><g:message code="address.user.label" default="User" /></span>

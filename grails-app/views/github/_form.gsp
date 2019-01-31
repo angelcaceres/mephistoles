@@ -29,3 +29,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: githubInstance, field: 'deleted', 'error')} ">
+	<label for="deleted">
+		<g:message code="github.deleted.label" default="Deleted" />
+		
+	</label>
+	<g:checkBox name="deleted" value="${githubInstance?.deleted}" />
+
+</div>
+

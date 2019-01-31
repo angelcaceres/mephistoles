@@ -29,3 +29,12 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: clabeInstance, field: 'deleted', 'error')} ">
+	<label for="deleted">
+		<g:message code="clabe.deleted.label" default="Deleted" />
+		
+	</label>
+	<g:checkBox name="deleted" value="${clabeInstance?.deleted}" />
+
+</div>
+

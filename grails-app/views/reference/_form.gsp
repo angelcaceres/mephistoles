@@ -56,6 +56,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: referenceInstance, field: 'deleted', 'error')} ">
+	<label for="deleted">
+		<g:message code="reference.deleted.label" default="Deleted" />
+		
+	</label>
+	<g:checkBox name="deleted" value="${referenceInstance?.deleted}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: referenceInstance, field: 'user', 'error')} required">
 	<label for="user">
 		<g:message code="reference.user.label" default="User" />

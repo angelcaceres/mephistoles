@@ -29,6 +29,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: vacationsInstance, field: 'past', 'error')} ">
+	<label for="past">
+		<g:message code="vacations.past.label" default="Past" />
+		
+	</label>
+	<g:checkBox name="past" value="${vacationsInstance?.past}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: vacationsInstance, field: 'approved', 'error')} ">
 	<label for="approved">
 		<g:message code="vacations.approved.label" default="Approved" />

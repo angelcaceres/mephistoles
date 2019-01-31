@@ -9,11 +9,9 @@ class Equipment {
     Date dateOfAssignment
     String price
     Boolean deleted = false
-    Date dateOfUnassignment
-    //Picture pic
-    //Files file
+    Date dateOfUnassignment    
     static belongsTo = [user:User]
-    //User user
+    byte[] foto
 
     static constraints = {
         type inList:["Laptop", "Computadora de Escritorio", "Teléfono", "Celular", "Monitor", "Ventilador", "Regulador", "Impresora"]
@@ -23,6 +21,11 @@ class Equipment {
         dateOfPurchase blank:false
         dateOfAssignment nullable:true
         price blank:false
+        foto maxSize: 10*1024*1024, nullable:true
         dateOfUnassignment nullable:true
+    }
+
+    static mapping = {
+        foto sqlType: 'longblob'
     }
 }

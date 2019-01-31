@@ -146,6 +146,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: userInstance, field: 'deleted', 'error')} ">
+	<label for="deleted">
+		<g:message code="user.deleted.label" default="Deleted" />
+		
+	</label>
+	<g:checkBox name="deleted" value="${userInstance?.deleted}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'equipment', 'error')} ">
 	<label for="equipment">
 		<g:message code="user.equipment.label" default="Equipment" />

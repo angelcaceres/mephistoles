@@ -77,6 +77,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${referenceInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="reference.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${referenceInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${referenceInstance?.user}">
 				<li class="fieldcontain">
 					<span id="user-label" class="property-label"><g:message code="reference.user.label" default="User" /></span>

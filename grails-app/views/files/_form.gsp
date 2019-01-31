@@ -20,6 +20,15 @@
 
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: filesInstance, field: 'deleted', 'error')} ">
+	<label for="deleted">
+		<g:message code="files.deleted.label" default="Deleted" />
+		
+	</label>
+	<g:checkBox name="deleted" value="${filesInstance?.deleted}" />
+
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: filesInstance, field: 'user', 'error')} required">
 	<label for="user">
 		<g:message code="files.user.label" default="User" />

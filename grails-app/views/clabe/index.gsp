@@ -30,6 +30,8 @@
 					
 						<g:sortableColumn property="description" title="${message(code: 'clabe.description.label', default: 'Description')}" />
 					
+						<g:sortableColumn property="deleted" title="${message(code: 'clabe.deleted.label', default: 'Deleted')}" />
+					
 					</tr>
 				</thead>
 				<tbody>
@@ -41,6 +43,8 @@
 						<td>${fieldValue(bean: clabeInstance, field: "bank")}</td>
 					
 						<td>${fieldValue(bean: clabeInstance, field: "description")}</td>
+					
+						<td><g:formatBoolean boolean="${clabeInstance.deleted}" /></td>
 					
 					</tr>
 				</g:each>

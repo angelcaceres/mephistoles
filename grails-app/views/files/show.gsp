@@ -39,6 +39,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${filesInstance?.deleted}">
+				<li class="fieldcontain">
+					<span id="deleted-label" class="property-label"><g:message code="files.deleted.label" default="Deleted" /></span>
+					
+						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${filesInstance?.deleted}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${filesInstance?.user}">
 				<li class="fieldcontain">
 					<span id="user-label" class="property-label"><g:message code="files.user.label" default="User" /></span>

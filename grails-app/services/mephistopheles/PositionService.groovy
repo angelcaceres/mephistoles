@@ -7,7 +7,7 @@ class PositionService {
 
     def listPastPositions(userId) {
         def position = new Position()
-        def user = User.findById(userId) 
+        def user = User.findById(1) 
         position.findAllWhere(current:false, user:user)
         
     }
