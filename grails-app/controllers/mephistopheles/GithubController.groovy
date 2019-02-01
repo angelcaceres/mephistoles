@@ -15,6 +15,14 @@ class GithubController {
         respond Github.list(params), model:[githubInstanceCount: Github.count()]
     }
 
+    def formulario() {
+                
+    }
+
+    def form() {
+                
+    }
+
     def show(Github githubInstance) {
         respond githubInstance
     }

@@ -1,3 +1,5 @@
+package mephistopheles
+
 class BootStrap {
 
     def init = { servletContext ->
