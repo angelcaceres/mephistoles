@@ -1,71 +1,325 @@
-
-<%@ page import="mephistopheles.Github" %>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'github.label', default: 'Github')}" />
-		<title><g:message code="default.show.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#show-github" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-github" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list github">
-			
-				<g:if test="${githubInstance?.gitUserName}">
-				<li class="fieldcontain">
-					<span id="gitUserName-label" class="property-label"><g:message code="github.gitUserName.label" default="Git User Name" /></span>
-					
-						<span class="property-value" aria-labelledby="gitUserName-label"><g:fieldValue bean="${githubInstance}" field="gitUserName"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${githubInstance?.active}">
-				<li class="fieldcontain">
-					<span id="active-label" class="property-label"><g:message code="github.active.label" default="Active" /></span>
-					
-						<span class="property-value" aria-labelledby="active-label"><g:formatBoolean boolean="${githubInstance?.active}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${githubInstance?.gitKey}">
-				<li class="fieldcontain">
-					<span id="gitKey-label" class="property-label"><g:message code="github.gitKey.label" default="Git Key" /></span>
-					
-						<span class="property-value" aria-labelledby="gitKey-label"><g:formatBoolean boolean="${githubInstance?.gitKey}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${githubInstance?.deleted}">
-				<li class="fieldcontain">
-					<span id="deleted-label" class="property-label"><g:message code="github.deleted.label" default="Deleted" /></span>
-					
-						<span class="property-value" aria-labelledby="deleted-label"><g:formatBoolean boolean="${githubInstance?.deleted}" /></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form url="[resource:githubInstance, action:'delete']" method="DELETE">
-				<fieldset class="buttons">
-					<g:link class="edit" action="edit" resource="${githubInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
-	</body>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mephistopheles -  Sistema de administración de recursos humanos</title>
+
+    <!-- Bootstrap Core CSS -->
+    <asset:stylesheet src="bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <asset:stylesheet src="sb-admin.css"/>
+
+    <!-- Custom Fonts -->
+    <asset:stylesheet src="font-awesome/css/font-awesome.min.css"/>
+
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Mephistopheles</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active"> 
+                        <a href="${createLink(uri: '/')}"><i class="fa fa-fw fa-bar-chart-o"></i> Inicio</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user"></i> <g:message code="menu.principal.User" />  <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/user/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/user/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#github"><i class="fa fa-github"></i> <g:message code="menu.principal.Gitgub" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="github" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/github/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/github/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#address"><i class="fa fa-map-marker"></i> <g:message code="menu.principal.Address" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="address" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/assress/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/address/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#position"><i class="fa fa-briefcase" aria-hidden="true"></i> <g:message code="menu.principal.Position" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="position" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/position/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/position/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#reference"><i class="fa fa-users" aria-hidden="true"></i> <g:message code="menu.principal.Reference" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="reference" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/reference/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/reference/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#vacations"><i class="fa fa-bus" aria-hidden="true"></i> <g:message code="menu.principal.Vacations" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="vacations" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/vacations/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/vacations/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#files"><i class="fa fa-file-image-o" aria-hidden="true"></i> <g:message code="menu.principal.Files" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="files" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/files/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/files/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#equipment"><i class="fa fa-laptop" aria-hidden="true"></i> <g:message code="menu.principal.Equipment" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="equipment" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/equipment/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/equipment/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#clabe"><i class="fa fa-money" aria-hidden="true"></i> <g:message code="menu.principal.Clabe" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="clabe" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/clabe/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/clabe/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Resumen de github
+                        </h1>
+                         
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+	<div class="col-lg-6">
+<div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Usuario de Github</th>
+                    <th>¿Se tiene respaldo de su llave?</th>
+                    <th>¿La cuenta está activa?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>${githubInstance.gitUserName}</td>
+                    <td>
+                        <g:if test="${githubInstance.gitKey == true}">
+                            Si.
+                        </g:if>
+                    <g:else>
+                        No
+                    </g:else>
+                    </td>
+                    <td>
+                    <g:if test="${githubInstance.active == true}">
+                            Si.
+                        </g:if>
+                    <g:else>
+                        No
+                    </g:else>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+	<asset:javascript src="jquery.js"/>
+
+    <!-- Bootstrap Core JavaScript -->
+	<asset:javascript src="bootstrap.min.js.js"/>	
+</body>
+
 </html>
