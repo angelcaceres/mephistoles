@@ -174,7 +174,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#address"><i class="fa fa-map-marker"></i> <g:message code="menu.principal.Address" /> <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="address" class="collapse">
                             <li>
-                                <a href="${createLink(uri: '/assress/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                                <a href="${createLink(uri: '/address/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
                             </li>
                             <li>
                                 <a href="${createLink(uri: '/address/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>

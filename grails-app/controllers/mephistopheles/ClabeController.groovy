@@ -11,8 +11,8 @@ class ClabeController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Clabe.list(params), model:[clabeInstanceCount: Clabe.count()]
+        def clabes = Clabe.list()
+        [clabes:clabes]
     }
 
     def show(Clabe clabeInstance) {
