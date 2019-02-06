@@ -1,66 +1,231 @@
-
-<%@ page import="mephistopheles.User" %>
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
-	<body>
-		<a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="list-user" class="content scaffold-list" role="main">
-			<h1><g:message code="default.list.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-				<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<table>
-			<thead>
-					<tr>
-					
-						<g:sortableColumn property="firstName" title="${message(code: 'user.firstName.label', default: 'First Name')}" />
-					
-						<g:sortableColumn property="exitDate" title="${message(code: 'user.exitDate.label', default: 'Exit Date')}" />
-					
-						<g:sortableColumn property="lastName" title="${message(code: 'user.lastName.label', default: 'Last Name')}" />
-					
-						<g:sortableColumn property="maternalLastName" title="${message(code: 'user.maternalLastName.label', default: 'Maternal Last Name')}" />
-					
-						<g:sortableColumn property="gender" title="${message(code: 'user.gender.label', default: 'Gender')}" />
-					
-						<g:sortableColumn property="homePhone" title="${message(code: 'user.homePhone.label', default: 'Home Phone')}" />
-					
-					</tr>
-				</thead>
-				<tbody>
-				<g:each in="${userInstanceList}" status="i" var="userInstance">
-					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-					
-						<td><g:link action="show" id="${userInstance.id}">${fieldValue(bean: userInstance, field: "firstName")}</g:link></td>
-					
-						<td><g:formatDate date="${userInstance.exitDate}" /></td>
-					
-						<td>${fieldValue(bean: userInstance, field: "lastName")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "maternalLastName")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "gender")}</td>
-					
-						<td>${fieldValue(bean: userInstance, field: "homePhone")}</td>
-					
-					</tr>
-				</g:each>
-				</tbody>
-			</table>
-			<div class="pagination">
-				<g:paginate total="${userInstanceCount ?: 0}" />
-			</div>
-		</div>
-	</body>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Mephistopheles -  Sistema de administración de recursos humanos</title>
+
+    <!-- Bootstrap Core CSS -->
+    <asset:stylesheet src="bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <asset:stylesheet src="sb-admin.css"/>
+
+    <!-- Custom Fonts -->
+    <asset:stylesheet src="font-awesome/css/font-awesome.min.css"/>
+
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Mephistopheles</a>
+            </div>
+            <!-- Top Menu Items -->
+                        <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Administrador <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active"> 
+                        <a href="${createLink(uri: '/')}"><i class="fa fa-fw fa-bar-chart-o"></i> Inicio</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-user"></i> <g:message code="menu.principal.User" />  <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/user/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/user/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#github"><i class="fa fa-github"></i> <g:message code="menu.principal.Gitgub" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="github" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/github/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/github/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#address"><i class="fa fa-map-marker"></i> <g:message code="menu.principal.Address" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="address" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/address/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/address/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#position"><i class="fa fa-briefcase" aria-hidden="true"></i> <g:message code="menu.principal.Position" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="position" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/position/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/position/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#reference"><i class="fa fa-users" aria-hidden="true"></i> <g:message code="menu.principal.Reference" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="reference" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/reference/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/reference/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#vacations"><i class="fa fa-bus" aria-hidden="true"></i> <g:message code="menu.principal.Vacations" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="vacations" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/vacations/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/vacations/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#files"><i class="fa fa-file-image-o" aria-hidden="true"></i> <g:message code="menu.principal.Files" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="files" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/files/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/files/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#equipment"><i class="fa fa-laptop" aria-hidden="true"></i> <g:message code="menu.principal.Equipment" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="equipment" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/equipment/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/equipment/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#clabe"><i class="fa fa-money" aria-hidden="true"></i> <g:message code="menu.principal.Clabe" /> <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="clabe" class="collapse">
+                            <li>
+                                <a href="${createLink(uri: '/clabe/')}"><i class="fa fa-plus-circle"></i> <g:message code="menu.principal.List" /></a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/clabe/create')}"><i class="fa fa-th-list"></i> <g:message code="menu.principal.Create" /></a>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Listado de usuarios registrados.
+                        </h1>
+                         
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+<div class="col-lg-6">
+    <div class="table-responsive-xl">
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha de ingreso</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>teléfono de casa</th>
+                    <th>Teléfono celular</th>
+                    <th>Número de seguro</th>
+                    <th>Correo institucional</th>
+                </tr>
+            </thead>
+            <tbody>
+            <g:each in="${users}" var="user" status="i">
+                <tr>
+                    <td>${user.firstName + ' ' +user.lastName}</td>
+					<td> <g:formatDate format="yyyy-MM-dd" date="${user.startDate}"/></td>
+                    <td><g:formatDate format="yyyy-MM-dd" date="${user.birthDate}"/></td>
+                    <td>${user.homePhone}</td>
+                    <td>${user.cellPhoneNumber}</td>
+                    <td>${user.nss}</td>
+                    <td>${user.institutionalMail}</td>
+                </tr>
+            </g:each>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    </div>
+    <!-- /#wrapper -->
+    
+
+    <!-- jQuery -->
+	<asset:javascript src="jquery.js"/>
+
+    <!-- Bootstrap Core JavaScript -->
+	<asset:javascript src="bootstrap.min.js.js"/>
+
+</body>
+
 </html>
