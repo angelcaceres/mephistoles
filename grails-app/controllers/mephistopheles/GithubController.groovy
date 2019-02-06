@@ -11,12 +11,8 @@ class GithubController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Github.list(params), model:[githubInstanceCount: Github.count()]
-    }
-
-    def create_bs() {
-        respond new Github(params)               
+        def githubs = Github.list()
+        [githubs:githubs]               
     }
 
     def form() {
