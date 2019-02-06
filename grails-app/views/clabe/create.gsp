@@ -281,8 +281,8 @@
 
                 <div class="row">
                     <div class="col-lg-6">
-                    <g:hasErrors>
-                        <g:eachError><p><g:message error="${it}"/></p></g:eachError>
+                    <g:hasErrors >
+                        <g:eachError><p class="p-3 mb-2 bg-danger text-white"><g:message error="${it}" /></p></g:eachError>
                     </g:hasErrors>
 
                         <g:form contoller='Clabe' action='save' role="form">
