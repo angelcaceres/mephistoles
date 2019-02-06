@@ -281,12 +281,15 @@
 
                 <div class="row">
                     <div class="col-lg-6">
+                    <g:hasErrors>
+                        <g:eachError><p><g:message error="${it}"/></p></g:eachError>
+                    </g:hasErrors>
 
                         <g:form contoller='Clabe' action='save' role="form">
 
                             <div class="form-group">
                                 <label>Clabe.</label>
-                                <g:field type="text" name='clabe' class="form-control" />
+                                <g:field type="text" name='clabe' class="form-control" maxlength='18' />
                                 
 								<label>Descripción.</label>
                                 <g:field type="text" name='description' class="form-control" />
