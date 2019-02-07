@@ -189,7 +189,7 @@
 
                             <div class="form-group">
                                 <label>Clabe.</label>
-                                <g:field type="text" name='clabe' class="form-control" maxlength='18' />
+                                <g:field type="number" name='clabe' class="form-control" oninvalid="this.setCustomValidity('La clabe sólo puede contener caracteres numéricos.')" id='clabe' />
                                 
 								<label>Descripción.</label>
                                 <g:field type="text" name='description' class="form-control" />
