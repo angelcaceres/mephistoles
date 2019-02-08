@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>Mephistopheles -  Sistema de administración de recursos humanos</title>
+    <link rel="shortcut icon" href="${createLinkTo(dir:'images',file:'bootstrap.png')}" type="image/x-icon" />
 
     <!-- Bootstrap Core CSS -->
     <asset:stylesheet src="bootstrap.min.css"/>
