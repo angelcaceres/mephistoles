@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Bootstrap Admin Template</title>
+    <title>Mephistopheles -  Sistema de administración de recursos humanos</title>
 
        <!-- Bootstrap Core CSS -->
     <asset:stylesheet src="bootstrap.min.css"/>
