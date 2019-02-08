@@ -1,8 +1,12 @@
 package mephistopheles
+import org.grails.databinding.BindingFormat
 
 class Vacations {
+    @BindingFormat('yyyy-MM-dd')
     Date dateOfRequest
+    @BindingFormat('yyyy-MM-dd')
     Date startDate
+    @BindingFormat('yyyy-MM-dd')
     Date endDate
     Boolean past
     Boolean approved = false
