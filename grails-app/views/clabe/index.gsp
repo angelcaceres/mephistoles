@@ -186,7 +186,6 @@
         </div>
         <!-- /#page-wrapper -->
 <div class="col-lg-6">
-    <h2>Listado de clabes registradas</h2>
     <div class="table-responsive">
         <table class="table table-bordered table-hover table-striped">
             <thead>

@@ -31,7 +31,7 @@ class User {
         firstName blank:false
         exitDate nullable:true
         lastName blank:false
-        maternalLastName blank:true, nullable:true
+        maternalLastName blank:true, nullable:false
         gender blank:false
         homePhone size:(10..10), blank:false
         cellPhoneNumber size:(10..10), blank:false

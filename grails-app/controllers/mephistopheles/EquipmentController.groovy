@@ -5,15 +5,22 @@ package mephistopheles
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-//@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class EquipmentController {
 
     //static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Equipment.list(params), model:[equipmentInstanceCount: Equipment.count()]
+        def equipments = Equipment.list()
+        [equipments:equipments]
     }
+
+    def displayFoto = {
+    def equipment = Equipment.get(params.id)
+    response.contentType = "image/jpeg"
+    response.contentLength = equipment?.foto.length
+    response.outputStream.write(equipment?.foto)
+}
 
     def show(Equipment equipmentInstance) {
         respond equipmentInstance
@@ -37,13 +44,13 @@ class EquipmentController {
 
         equipmentInstance.save (failOnError: true)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'equipment.label', default: 'Equipment'), equipmentInstance.id])
-                redirect equipmentInstance
-            }
-            '*' { respond equipmentInstance, [status: CREATED] }
-        }
+        //request.withFormat {
+        //    form multipartForm {
+        //        flash.message = message(code: 'default.created.message', args: [message(code: 'equipment.label', default: 'Equipment'), equipmentInstance.id])
+        //        redirect equipmentInstance
+        //    }
+        //    '*' { respond equipmentInstance, [status: CREATED] }
+        //}
     }
 
     def edit(Equipment equipmentInstance) {
