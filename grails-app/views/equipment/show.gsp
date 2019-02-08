@@ -174,7 +174,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Listado de equipo registrado.
+                            Resumen de equipo registrado.
                         </h1>
                          
                         </ol>
