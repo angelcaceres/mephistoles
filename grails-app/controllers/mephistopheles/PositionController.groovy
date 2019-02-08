@@ -11,8 +11,8 @@ class PositionController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Position.list(params), model:[positionInstanceCount: Position.count()]
+        def positions = Position.list()
+        [positions:positions]     
     }
 
     def show(Position positionInstance) {
