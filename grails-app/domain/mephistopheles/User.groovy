@@ -1,5 +1,5 @@
 package mephistopheles
-
+import org.grails.databinding.BindingFormat
 /*
 * Domain class for storing users info
 * Author: Angel Caceres Licona
@@ -9,8 +9,11 @@ class User {
     String firstName
     String lastName
     String maternalLastName
+    @BindingFormat('yyyy-MM-dd')
     Date startDate
+    @BindingFormat('yyyy-MM-dd')
     Date birthDate
+    @BindingFormat('yyyy-MM-dd')
     Date exitDate
     String gender
     String homePhone

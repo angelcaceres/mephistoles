@@ -293,7 +293,7 @@
                                 <g:field type="date" name='endDate' class="form-control" />
 
 								<label>Usuario que solicita</label>
-								<g:select id="user" name="user.id" from="${mephistopheles.User.list()}" optionKey="id" required="" value="${equipment?.user?.firstName}" class="form-control" noSelection="['':'-Seleccione un usuario de la lista-']" optionValue="${{it.firstName + ' ' + it.lastName  }}"
+								<g:select id="user" name="user.id" from="${mephistopheles.User.list()}" optionKey="id" required="" value="${vacations?.user?.firstName}" class="form-control" noSelection="['':'-Seleccione un usuario de la lista-']" optionValue="${{it.firstName + ' ' + it.lastName  }}"
 								oninvalid="this.setCustomValidity('Seleccione un usuario de la lista.')"/>
                             <g:actionSubmit value="Guardar." action='save' class="btn btn-default" />
                             <button type="reset" class="btn btn-default">Limpiar campos</button>
